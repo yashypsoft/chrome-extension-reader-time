@@ -1,0 +1,95 @@
+{
+    "manifest_version": 3,
+    "name": "My Extension",
+    "version": "1.0",
+    "description": "A brief description of my extension",
+    "icons": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "My Extension",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      },
+      "browser_style": true,
+      "theme_icons": [
+        { "light": "icons/theme-light.png", "dark": "icons/theme-dark.png", "size": 16 },
+        { "light": "icons/theme-light.png", "dark": "icons/theme-dark.png", "size": 32 },
+        { "light": "icons/theme-light.png", "dark": "icons/theme-dark.png", "size": 48 },
+        { "light": "icons/theme-light.png", "dark": "icons/theme-dark.png", "size": 128 }
+      ],
+      "badge": {
+        "text": "10",
+        "color": "#FF0000"
+      },
+      "menu_item_id": "my-extension-context-menu",
+      "action_type": "show",
+      "user_interface": {
+        "menu": {
+          "id": "my-extension-menu",
+          "contexts": ["browser_action", "page", "selection", "link"]
+        }
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.example.com/*"],
+        "js": ["content_script.js"],
+        "css": ["content_script.css"]
+      }
+    ],
+    "background": {
+      "service_worker": "background.js",
+      "persistent": true
+    },
+    "permissions": [
+      "activeTab",
+      "contextMenus",
+      "clipboardWrite",
+      "clipboardRead",
+      "declarativeContent",
+      "downloads",
+      "management",
+      "notifications",
+      "webNavigation",
+      "webRequest",
+      "webRequestBlocking",
+      "storage",
+      "alarms",
+      "tabs",
+      "background",
+      "contentScripts",
+      "hostPermissions"
+    ],
+    "host_permissions": [
+      "https://www.example.com/*"
+    ],
+    "content_security_policy": "script-src 'self' https://www.example.com; object-src 'self'",
+    "incognito": "spanning",
+    "optional_permissions": [
+      "cookies",
+      "bookmarks",
+      "history"
+    ],
+    "oauth2": {
+      "client_id": "your_client_id.apps.googleusercontent.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.profile"
+      ]
+    },
+    "key": "YOUR_PUBLIC_KEY",
+    "externally_connectable": {
+      "matches": [
+        "https://www.example.com/*"
+      ]
+    }
+  }
+  
